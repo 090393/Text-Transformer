@@ -7,7 +7,7 @@ public class UpperTransformer extends CaseTransformer{
     private String caseTransform(String text){ return upper(text); }
 
     private String upper(String text){
-        //TODO
+        text = text.toUpperCase();
         return text;
     }
 }
