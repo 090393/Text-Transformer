@@ -6,6 +6,11 @@ public class FloatTransformer extends NumbersTransformer {
 
     private String transformNumbers(String text){ return super.transform(transformFloat(text)); }
 
+    /**
+     * Przeksztalca zdania z liczbami zmiennoprzecinkowymi i zapisuje je jako slowa
+     * @param text zdanie do przeksztalcenia
+     * @return przeksztalcone zdanie
+     */
     //Przekształcanie liczb zmiennoprzecinkowych na słowa
     private String transformFloat(String text){
         String tmp = "";
@@ -38,6 +43,12 @@ public class FloatTransformer extends NumbersTransformer {
         }
         return result;
     }
+
+    /**
+     * Przeksztalca liczbe zmiennoprzecinkowa na slowa
+     * @param text liczba do przeksztalcenia
+     * @return liczba zzmiennoprzecinkowa zapisana w slowach
+     */
     private String transform_float(String text)
     {
         String result = "";
@@ -82,6 +93,11 @@ public class FloatTransformer extends NumbersTransformer {
         return result;
     }
 
+    /**
+     * zamienia liczbe na slowa
+     * @param text liczba do przeksztalcenia
+     * @return liczba zapisana slowami
+     */
     private String transform_number(String text)
     {
         String result = "";
