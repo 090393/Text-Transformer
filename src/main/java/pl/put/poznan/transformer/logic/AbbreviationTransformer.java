@@ -9,8 +9,9 @@ public class AbbreviationTransformer extends TextTransformer {
     }
 
     //Zamiana słów na skróty
-    private String abbreviate(String text){
+    public String abbreviate(String text){
         //TODO
+        text = text.replace("na przykład", "np.");
         return text;
     }
 }
