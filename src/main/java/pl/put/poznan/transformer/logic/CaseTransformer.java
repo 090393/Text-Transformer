@@ -6,9 +6,6 @@ public class CaseTransformer extends TextTransformer {
         super(transforms);
     }
 
-    public String transform(String text){ return caseTransform(text); }
+    public String transform(String text){ return text; }
 
-    private String caseTransform(String text){
-        return text;
-    }
 }

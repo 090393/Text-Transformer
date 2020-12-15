@@ -9,7 +9,6 @@ public class LowerTransformer extends TextTransformer {
     public String transform(String text){ return lower(text); }
 
     private String lower(String text){
-        text = text.toLowerCase();
-        return text;
+        return text.toLowerCase();
     }
 }

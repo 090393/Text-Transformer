@@ -1,17 +1,19 @@
 package pl.put.poznan.transformer.logic;
 
-public class FloatTransformer extends NumbersTransformer {
+public class FloatTransformer extends TextTransformer {
 
     public FloatTransformer(String[] transforms) { super(transforms); }
 
-    private String transformNumbers(String text){ return transformFloat(text); }
+    public String transform(String text){
+        return transformFloat(text);
+    }
 
     /**
      * Przeksztalca zdania z liczbami zmiennoprzecinkowymi i zapisuje je jako slowa
      * @param text zdanie do przeksztalcenia
      * @return przeksztalcone zdanie
      */
-    //Przekształcanie liczb zmiennoprzecinkowych na słowa
+
     private String transformFloat(String text){
         String tmp = "";
         String result = "";
@@ -100,6 +102,7 @@ public class FloatTransformer extends NumbersTransformer {
      */
     private String transform_number(String text)
     {
+        if (text.length() > 3) return text;
         String result = "";
         String[] hundreds = {"sto ", "dwiescie "," trzysta ","czterysta ","piecset ","szescset ","siedemset ","osiemset ","dziewiecset "};
         String[] teen = {"jedenascie","dwanascie","trzynascie","czternascie","pietnascie","szesnascie","siedemnascie","osiemnascie","dziewietnascie"};
