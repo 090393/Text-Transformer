@@ -9,7 +9,13 @@ public class AbbreviationTransformer extends TextTransformer {
     }
 
     //Zamiana słów na skróty
-    public String abbreviate(String text){
+
+    /**Zamaina słów na skróty
+     *
+     * @param text tekst wejściowy
+     * @return teskt z zamienionymi słowami na stróty
+     */
+    private String abbreviate(String text){
         //TODO
         text = text.replace("na przykład", "np.");
         text = text.replace("NA PRZYKŁAD", "NP.");
