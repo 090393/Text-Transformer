@@ -10,14 +10,6 @@ public class TextTransformer implements Transformer{
     
     @Override
     public String transform(String text) {
-        this.text = text;
-/*
-        for (String tform : transforms)
-        {
-            transformer = ??????
-            this.text = transformer.transform(this.text) ?
-        }
-*/
-        return this.text;
+        return transformer.transform(text);
     }
 }
