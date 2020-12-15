@@ -4,9 +4,7 @@ public class AbbreviationTransformer extends TextTransformer {
 
     public AbbreviationTransformer(String[] transforms) { super(transforms); }
 
-    public String transform(String text){
-        return super.transform(abbreviate(text));
-    }
+    public String transform(String text){ return abbreviate(text); }
 
     //Zamiana słów na skróty
     private String abbreviate(String text){

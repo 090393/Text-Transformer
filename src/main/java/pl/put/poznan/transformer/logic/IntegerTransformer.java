@@ -6,7 +6,7 @@ public class IntegerTransformer extends NumbersTransformer {
         super(transforms);
     }
 
-    private String transformNumbers(String text){ return super.transform(transformInteger(text)); }
+    private String transformNumbers(String text){ return transformInteger(text); }
 
     //Przekształcanie liczb całkowitych na słowa
     private String transformInteger(String text){

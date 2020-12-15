@@ -1,15 +1,17 @@
 package pl.put.poznan.transformer.logic;
 
-public class CapitalizeTransformer extends CaseTransformer {
+import org.springframework.util.StringUtils;
+
+public class CapitalizeTransformer extends TextTransformer {
 
     public CapitalizeTransformer(String[] transforms) {
         super(transforms);
     }
 
-    private String caseTransform(String text){ return super.transform(capitalize(text)); }
+    public String transform(String text){ return capitalize(text); }
 
     private String capitalize(String text){
-        //TODO
+        text = StringUtils.capitalize(text);
         return text;
     }
 }
