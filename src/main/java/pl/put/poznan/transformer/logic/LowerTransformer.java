@@ -10,6 +10,7 @@ public class LowerTransformer extends CaseTransformer {
 
     private String lower(String text){
         //TODO
+        text = text.toLowerCase();
         return text;
     }
 }

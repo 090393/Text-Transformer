@@ -12,7 +12,7 @@ public class InverseTransformer extends TextTransformer{
 
     //Odwracanie ciągu znaków z zachowaniem wielkości liter
     private String inverse(String text){
-        //TODO
+
         return text;
     }
 }

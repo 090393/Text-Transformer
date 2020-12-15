@@ -8,6 +8,7 @@ public class UpperTransformer extends CaseTransformer{
 
     private String upper(String text){
         //TODO
+        text = text.toUpperCase();
         return text;
     }
 }
