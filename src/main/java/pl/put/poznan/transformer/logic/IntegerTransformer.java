@@ -8,12 +8,47 @@ public class IntegerTransformer extends NumbersTransformer {
 
     private String transformNumbers(String text){ return super.transform(transformInteger(text)); }
 
-    //Przekształcanie liczb całkowitych na słowa
+    /**Przeksztalcanie liczb calkowitych na slowa
+     *
+     * @param text zdanie do przeksztalcenia
+     * @return zwraca zdanie z przeksztalconymi liczbami na slowa
+     */
     private String transformInteger(String text){
+        String tmp = "";
+        String result = "";
+        boolean number = false;
+        for( int i =0; i<text.length();i++)
+        {
+            if(text.charAt(i)>=48 && text.charAt(i) <=57)
+            {
+                tmp += text.charAt(i);
+                number = true;
+            }
+            else
+            {
+                number = false;
+            }
+            if(!tmp.isEmpty() && !number)
+            {
+                result += transform_number(tmp);
+                tmp = "";
+            }
+            result += text.charAt(i);
+        }
+        return result;
+    }
+
+    /**
+     * Przeksztalcenie liczby na slowa
+     * @param text liczba na wejscie
+     * @return zamieniona liczba na slowa
+     */
+    private String transform_number(String text)
+    {
         String result = "";
         String[] hundreds = {"sto ", "dwiescie ","trzysta ","czterysta ","piecset ","szescset ","siedemset ","osiemset ","dziewiecset "};
         String[] dozen = {"", "dziesiec ","dwadziescia ","trzydziesci ","czterdziesci ","piecdziesiat ","szescdziesiat ","siedemdziesiat ","osiemdziesiat ","dziewiecdziesiat "};
-        String[] unity = {"","jeden","dwa","trzy","cztery","piec","szesc","siedem","osiem","dziewiec"};
+        String[] unity = {"","jeden ","dwa ","trzy ","cztery ","piec ","szesc ","siedem ","osiem ","dziewiec "};
         if( text.length()==3)
         {
             result = hundreds[text.charAt(0)-48] + dozen[text.charAt(1)-48] + unity[text.charAt(2)-48];
