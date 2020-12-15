@@ -8,6 +8,12 @@ public class LowerTransformer extends TextTransformer {
 
     public String transform(String text){ return lower(text); }
 
+    /** Zammiana liter na małe
+     *
+     * @param text Tekst wejściowy
+     * @return Wynikowy tekst
+     */
+
     private String lower(String text){
         text = text.toLowerCase();
         return text;

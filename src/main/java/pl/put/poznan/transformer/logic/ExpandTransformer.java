@@ -10,6 +10,12 @@ public class ExpandTransformer extends TextTransformer{
         return expand(text);
     }
 
+    /** Rozwijanie wybranych skrótów do pełnych postaci
+     *
+     * @param text Tekst wejściowy
+     * @return Wynikowy tekst
+     */
+
     //Rozwijanie skrótów
     private String expand(String text){
             text = text.replace("np.", "na przykład");

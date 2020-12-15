@@ -8,6 +8,11 @@ public class CapitalizeTransformer extends TextTransformer {
 
     public String transform(String text){ return capitalize(text); }
 
+    /** Zamiana pierwszej litery każdego wyrazu  na wielką.
+     *
+     * @param text Tekst wejściowy
+     * @return Wynikowy tekst
+     */
     private String capitalize(String text){
         for(int i = 0;i<text.length();i++)
         {

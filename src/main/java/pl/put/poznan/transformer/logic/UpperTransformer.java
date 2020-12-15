@@ -8,6 +8,11 @@ public class UpperTransformer extends TextTransformer{
 
     private String caseTransform(String text){ return upper(text); }
 
+    /** Zamaiana liter na wielkie
+     *
+     * @param text Tekst wejściowy
+     * @return Wynikowy tekst
+     */
     private String upper(String text){
         text = text.toUpperCase();
         return text;
