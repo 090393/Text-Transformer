@@ -1,13 +1,12 @@
 package pl.put.poznan.transformer.logic;
 
-public class UpperTransformer extends CaseTransformer{
+public class UpperTransformer extends TextTransformer{
 
     public UpperTransformer(String[] transforms) { super(transforms); }
 
-    private String caseTransform(String text){ return upper(text); }
+    public String transform(String text){ return upper(text); }
 
     private String upper(String text){
-        //TODO
-        return text;
+        return text.toUpperCase();
     }
 }

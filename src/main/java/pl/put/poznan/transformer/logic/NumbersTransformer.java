@@ -7,10 +7,7 @@ public class NumbersTransformer extends TextTransformer{
     }
 
     public String transform(String text){
-        return transformNumbers(text);
-    }
-
-    private String transformNumbers(String text){
         return text;
     }
+
 }
