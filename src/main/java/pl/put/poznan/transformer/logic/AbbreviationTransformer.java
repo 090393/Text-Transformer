@@ -12,6 +12,13 @@ public class AbbreviationTransformer extends TextTransformer {
     public String abbreviate(String text){
         //TODO
         text = text.replace("na przykład", "np.");
+        text = text.replace("NA PRZYKŁAD", "NP.");
+        text = text.replace("między innymi", "m.in.");
+        text = text.replace("MIĘDZY INNYMI", "M.IN.");
+        text = text.replace("i tym podobne", "itp.");
+        text = text.replace("I TYM PODOBNE", "ITP.");
+        text = text.replace("i tak dalej", "itd.");
+        text = text.replace("I TAK DALEJ", "ITD.");
         return text;
     }
 }

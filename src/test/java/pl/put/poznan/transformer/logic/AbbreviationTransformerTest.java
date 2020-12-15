@@ -8,19 +8,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AbbreviationTransformerTest {
 
-    AbbreviationTransformer text;
+    String[] str = {"cos"};
+    AbbreviationTransformer text=new AbbreviationTransformer(str);
 
-    @BeforeEach
-     public void setUp()
-    {
-        String[] str = {"abbreviation"};
-        text = new AbbreviationTransformer(str);
-    }
+
 
     @Test
     public void testAbbreviate()
     {
-        assertEquals("ryba to np. okoń ",text.transform("ryba to na przykład  okoń"));
+        assertEquals("ryba to np. okoń",text.abbreviate("ryba to na przykład okoń"));
+        assertEquals("RYBA TO NP. OKOŃ",text.abbreviate("RYBA TO NA PRZYKŁAD OKOŃ"));
+        assertEquals("ryba to m.in. okoń",text.abbreviate("ryba to między innymi okoń"));
+
+
+
     }
 
 
