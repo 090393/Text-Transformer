@@ -54,6 +54,20 @@ public class IntegerTransformer extends TextTransformer {
      */
     public String transform_number(String text)
     {
+        int erase=0, len = text.length();
+        String tmp = text;
+        for(int i = 0 ; i<len-1;i++)
+        {
+            if(text.charAt(i) == 48)
+            {
+                erase = i+1;
+            }
+            else
+            {
+                break;
+            }
+        }
+        text = tmp.substring(erase,len);
         if (text.length() > 3) return text;
         String result = "";
         String[] hundreds = {"sto ", "dwiescie ", "trzysta ","czterysta ","piecset ", "szescset ","siedemset ","osiemset ","dziewiecset "};
