@@ -1,15 +1,16 @@
 package pl.put.poznan.transformer.logic;
 
-public class LowerTransformer extends CaseTransformer {
+public class LowerTransformer extends TextTransformer {
 
     public LowerTransformer(String[] transforms) {
         super(transforms);
     }
 
-    private String caseTransform(String text){ return super.transform(lower(text)); }
+    public String transform(String text){ return lower(text); }
 
     private String lower(String text){
         //TODO
+        text = text.toLowerCase();
         return text;
     }
 }

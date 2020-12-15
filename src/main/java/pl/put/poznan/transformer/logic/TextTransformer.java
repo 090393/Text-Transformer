@@ -4,12 +4,15 @@ public class TextTransformer implements Transformer{
 
     private String[] transforms;
     private String text;
-    private Transformer transformer;
+    //private Transformer transformer;
 
-    public TextTransformer(String[] transforms){ this.transforms = transforms; }
+    public TextTransformer(String[] transforms){
+        this.transforms = transforms;
+    }
     
     @Override
     public String transform(String text) {
-        return transformer.transform(text);
+        //return new TransformerDefault().transform(text);
+        return text;
     }
 }

@@ -7,7 +7,7 @@ public class NumbersTransformer extends TextTransformer{
     }
 
     public String transform(String text){
-        return super.transform(transformNumbers(text));
+        return transformNumbers(text);
     }
 
     private String transformNumbers(String text){
