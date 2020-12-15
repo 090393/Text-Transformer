@@ -15,7 +15,7 @@ public class InverseTransformer extends TextTransformer{
      * @param text tekst do zamiany
      * @return odwrocony tekst z zachowana kolejnosca duzych liter
      */
-    public String inverse(String text){
+    private String inverse(String text){
         boolean[] upper = new boolean[text.length()];
 
         for (int i =0; i<text.length();i++)
