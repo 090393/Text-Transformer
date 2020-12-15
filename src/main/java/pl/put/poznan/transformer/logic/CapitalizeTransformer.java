@@ -11,7 +11,7 @@ public class CapitalizeTransformer extends TextTransformer {
     private String capitalize(String text){
         for(int i = 0;i<text.length();i++)
         {
-            if(text.substring(i, i+1) == " ") {
+            if(text.charAt(i) == ' ') {
                 text = text.substring(0,i)+Character.toLowerCase(text.charAt(i + 1))+ text.substring(i+1);
             }
         }
