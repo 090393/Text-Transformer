@@ -1,21 +1,36 @@
 package pl.put.poznan.transformer.logic;
 
+/*
+ * Klasa będąca szablonem dla pozostałych klas transformujących,
+ * a jednocześnie obsługuje wywołanie odpowiednich metod na podanym
+ * tekście, przy użyciu transformacji podanych jako argument w konstruktorze.
+ */
+
 public class TextTransformer implements Transformer{
 
     private String[] transforms;
     private String text;
-    //private Transformer transformer;
 
+    /*
+     * Inicjalizacja z wybranymi formami transformacji
+     *
+     * @param transforms tablica wybranych transformacji
+     */
     public TextTransformer(String[] transforms){
         this.transforms = transforms;
     }
-    
+
+    /*
+     * Wykonanie zdeklarowanych w konstruktorze transformacji
+     * na podanym jako argument tekście
+     *
+     * @param text Tekst do transformacji
+     * @return Tekst po wykonaniu wszystkich transformacji
+     */
     @Override
     public String transform(String text) {
         this.text = text;
-        //System.out.println(this.text);
         for (String tr : transforms) {
-            System.out.println(this.text);
             switch (tr)
             {
                 case "upper":
@@ -51,10 +66,9 @@ public class TextTransformer implements Transformer{
                     break;
 
                 default:
-                    return "ERROR :)";
+                    return "ERROR - Podano błędną transformację.";
             }
         }
-        System.out.println(this.text);
         return this.text;
     }
 }
