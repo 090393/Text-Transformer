@@ -1,5 +1,8 @@
 package pl.put.poznan.transformer.logic;
-
+/**
+ * Klasa słuzaca do rozwijania wybranych skrótów do pełnych postaci.
+ * @author Krzychu
+ */
 public class ExpandTransformer extends TextTransformer{
 
     public ExpandTransformer(String[] transforms) {

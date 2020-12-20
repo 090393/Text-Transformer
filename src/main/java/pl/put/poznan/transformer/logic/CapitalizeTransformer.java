@@ -1,6 +1,11 @@
 package pl.put.poznan.transformer.logic;
+/**
+ * Klasa słuzaca do zamieniania pierwszej litery w słowie na wielką
+ * @author Krzychu
+ */
 
 public class CapitalizeTransformer extends TextTransformer {
+
 
     public CapitalizeTransformer(String[] transforms) {
         super(transforms);

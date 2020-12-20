@@ -1,5 +1,8 @@
 package pl.put.poznan.transformer.logic;
-
+/**
+ * Klasa słuzaca do zamiany zwrotów słownych na skróty.
+ * @author Krzychu
+ */
 public class AbbreviationTransformer extends TextTransformer {
 
     public AbbreviationTransformer(String[] transforms) { super(transforms); }

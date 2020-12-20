@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
-/*
+/**
  * Klasa będąca szablonem dla pozostałych klas transformujących,
  * a jednocześnie obsługuje wywołanie odpowiednich metod na podanym
  * tekście, przy użyciu transformacji podanych jako argument w konstruktorze.
@@ -11,7 +11,7 @@ public class TextTransformer implements Transformer{
     private String[] transforms;
     private String text;
 
-    /*
+    /**
      * Inicjalizacja z wybranymi formami transformacji
      *
      * @param transforms tablica wybranych transformacji
@@ -20,7 +20,7 @@ public class TextTransformer implements Transformer{
         this.transforms = transforms;
     }
 
-    /*
+    /**
      * Wykonanie zdeklarowanych w konstruktorze transformacji
      * na podanym jako argument tekście
      *

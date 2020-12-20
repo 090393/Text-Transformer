@@ -1,5 +1,8 @@
 package pl.put.poznan.transformer.logic;
-
+/**
+ * Klasa słuzaca do zamiany liter na małe.
+ * @author Krzychu
+ */
 public class LowerTransformer extends TextTransformer {
 
     public LowerTransformer(String[] transforms) {
