@@ -1,5 +1,12 @@
 package pl.put.poznan.transformer.logic;
 import java.lang.*;
+
+/**
+ * Klasa sluzaca do zamiany zdania wejsciowego w taki sposob,
+ * aby na wyjsciu pojawilo sie to samo zdanie w odwroconej kolejnosci
+ * i z zachowaniew wielkosci liter na danym miejscu
+ * @author Rollo
+ */
 public class InverseTransformer extends TextTransformer{
 
     public InverseTransformer(String[] transforms) {
@@ -11,7 +18,7 @@ public class InverseTransformer extends TextTransformer{
     }
 
     /**
-     * Odwracanie ciągu znaków z zachowaniem wielkości liter
+     * Metoda sluzaca do odwracania ciagu znaków z zachowaniem wielkości liter
      * @param text tekst do zamiany
      * @return odwrocony tekst z zachowana kolejnosca duzych liter
      */

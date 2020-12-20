@@ -1,5 +1,10 @@
 package pl.put.poznan.transformer.logic;
 
+/**
+ * Klasa słuzaca do przeksztalcania zdania wejsciowego w taki sposob,
+ * aby na wyjsciu zamiast liczb pojawil sie zapis tych liczb w slowach
+ * @author Rollo
+ */
 public class IntegerTransformer extends TextTransformer {
 
     public IntegerTransformer(String[] transforms) {
@@ -10,12 +15,12 @@ public class IntegerTransformer extends TextTransformer {
         return transformInteger(text);
     }
 
-    /**Przeksztalcanie liczb calkowitych na slowa
-     *
+    /**
+     *Metoda sluzaca do wyszukiwania liczb w zdaniu
      * @param text zdanie do przeksztalcenia
      * @return zwraca zdanie z przeksztalconymi liczbami na slowa
      */
-    public String transformInteger(String text){
+    private String transformInteger(String text){
         String tmp = "";
         String result = "";
         boolean number = false;
@@ -48,11 +53,11 @@ public class IntegerTransformer extends TextTransformer {
     }
 
     /**
-     * Przeksztalcenie liczby na slowa
+     * Metoda słuzaca do zamieniania liczby na slowo
      * @param text liczba na wejscie
      * @return zamieniona liczba na slowa
      */
-    public String transform_number(String text)
+    private String transform_number(String text)
     {
         int erase=0, len = text.length();
         String tmp = text;

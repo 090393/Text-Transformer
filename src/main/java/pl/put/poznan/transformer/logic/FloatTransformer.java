@@ -1,5 +1,10 @@
 package pl.put.poznan.transformer.logic;
 
+/**
+ * Klasa słuzaca do przeksztalcania zdania wejsciowego w taki sposob,
+ * aby na wyjsciu zamiast liczb zmiennoprzecinkowych pojawil sie zapis tych liczb w slowach
+ * @author Rollo
+ */
 public class FloatTransformer extends TextTransformer {
 
     public FloatTransformer(String[] transforms) { super(transforms); }
@@ -9,7 +14,7 @@ public class FloatTransformer extends TextTransformer {
     }
 
     /**
-     * Przeksztalca zdania z liczbami zmiennoprzecinkowymi i zapisuje je jako slowa
+     * Metoda wuszukujaca liczby zmiennoprzecinkowe
      * @param text zdanie do przeksztalcenia
      * @return przeksztalcone zdanie
      */
@@ -47,9 +52,9 @@ public class FloatTransformer extends TextTransformer {
     }
 
     /**
-     * Przeksztalca liczbe zmiennoprzecinkowa na slowa
-     * @param text liczba do przeksztalcenia
-     * @return liczba zzmiennoprzecinkowa zapisana w slowach
+     * Metoda zamieniajaca liczbe zmiennoprzecinkowa na slowa
+     * @param text liczba zmiennoprzecinkowa do przeksztalcenia
+     * @return liczba zmiennoprzecinkowa zapisana w slowach
      */
     private String transform_float(String text)
     {
@@ -96,7 +101,7 @@ public class FloatTransformer extends TextTransformer {
     }
 
     /**
-     * zamienia liczbe na slowa
+     * Metoda słuzaca do zamieniania liczby na slowo
      * @param text liczba do przeksztalcenia
      * @return liczba zapisana slowami
      */
