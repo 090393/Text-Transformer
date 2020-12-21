@@ -15,32 +15,38 @@ public class TextTransformerController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+                      @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
 
         // log the parameters
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        TransformationsMapping tm = new TransformationsMapping(transforms, logger);
+        TextTransformationDecorator tt = tm.dynamicTransformation();
+
+        if (tt == null)
+            return "ERROR: Podano nieprawidłową transformację";
+        else
+            return tt.transform(text);
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public String post(@PathVariable String text,
-                      @RequestBody String[] transforms) {
+                       @RequestBody String[] transforms) {
 
         // log the parameters
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        TransformationsMapping tm = new TransformationsMapping(transforms, logger);
+        TextTransformationDecorator tt = tm.dynamicTransformation();
+
+        if (tt == null) {
+            logger.info("Given incorrect transformation");
+            return "ERROR: Podano nieprawidłową transformację";
+        } else
+            return tt.transform(text);
     }
-
-
-
 }
-
-
