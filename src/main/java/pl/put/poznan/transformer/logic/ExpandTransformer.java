@@ -1,16 +1,17 @@
 package pl.put.poznan.transformer.logic;
+
 /**
- * Klasa słuzaca do rozwijania wybranych skrótów do pełnych postaci.
+ * Klasa służąca do rozwijania wybranych skrótów do pełnych postaci.
  * @author Krzychu
  */
-public class ExpandTransformer extends TextTransformer{
+public class ExpandTransformer extends TextTransformerDecorator{
 
-    public ExpandTransformer(String[] transforms) {
-        super(transforms);
+    public ExpandTransformer(Transformer transformer) {
+        super(transformer);
     }
 
     public String transform(String text){
-        return expand(text);
+        return super.transform(expand(text));
     }
 
     /** Rozwijanie wybranych skrótów do pełnych postaci
@@ -18,9 +19,7 @@ public class ExpandTransformer extends TextTransformer{
      * @param text Tekst wejściowy
      * @return Wynikowy tekst
      */
-
-    //Rozwijanie skrótów
-    private String expand(String text){
+    public String expand(String text){
             text = text.replace("np.", "na przykład");
             text = text.replace("NP.", "NA PRZYKŁAD");
             text = text.replace("m.in.", "między innymi");
