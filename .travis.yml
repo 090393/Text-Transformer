@@ -1,1 +1,8 @@
 language: Java
+deploy:
+  provider: releases
+  file_glob: true
+  file: "pl/*"
+  skip_cleanup: true
+  on:
+    tags: true
