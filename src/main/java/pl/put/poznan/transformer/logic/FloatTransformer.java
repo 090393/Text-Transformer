@@ -1,25 +1,24 @@
 package pl.put.poznan.transformer.logic;
 
 /**
- * Klasa słuzaca do przeksztalcania zdania wejsciowego w taki sposob,
- * aby na wyjsciu zamiast liczb zmiennoprzecinkowych pojawil sie zapis tych liczb w slowach
+ * Klasa służąca do przekształcania zdania wejściowego w taki sposób,
+ * aby na wyjściu zamiast liczb zmiennoprzecinkowych pojawił się zapis tych liczb w słowach.
  * @author Rollo
  */
-public class FloatTransformer extends TextTransformer {
+public class FloatTransformer extends TextTransformerDecorator {
 
-    public FloatTransformer(String[] transforms) { super(transforms); }
+    public FloatTransformer(Transformer transformer) { super(transformer); }
 
     public String transform(String text){
-        return transformFloat(text);
+        return super.transform(transformFloat(text));
     }
 
     /**
-     * Metoda wuszukujaca liczby zmiennoprzecinkowe
-     * @param text zdanie do przeksztalcenia
-     * @return przeksztalcone zdanie
+     * Metoda wyszukująca liczby zmiennoprzecinkowe
+     * @param text zdanie do przekształcenia
+     * @return przekształcone zdanie
      */
-
-    private String transformFloat(String text){
+    public String transformFloat(String text){
         String tmp = "";
         String result = "";
         boolean number = false;
@@ -52,11 +51,11 @@ public class FloatTransformer extends TextTransformer {
     }
 
     /**
-     * Metoda zamieniajaca liczbe zmiennoprzecinkowa na slowa
-     * @param text liczba zmiennoprzecinkowa do przeksztalcenia
-     * @return liczba zmiennoprzecinkowa zapisana w slowach
+     * Metoda zamieniająca liczbę zmiennoprzecinkową na słowa
+     * @param text liczba zmiennoprzecinkowa do przekształcenia
+     * @return liczba zmiennoprzecinkowa zapisana w słowach
      */
-    private String transform_float(String text)
+    public String transform_float(String text)
     {
         String result = "";
 
@@ -74,12 +73,12 @@ public class FloatTransformer extends TextTransformer {
                 {
                     if(result.charAt(result.length()-1) <=52)
                     {
-                        result += " dziesiate";
+                        result += " dziesiąte";
 
                     }
                     else
                     {
-                        result += " dziesiatych";
+                        result += " dziesiątych";
 
                     }
                 }
@@ -89,7 +88,7 @@ public class FloatTransformer extends TextTransformer {
                 }
                 if(x == 3)
                 {
-                    result += " tysieczne";
+                    result += " tysięczne";
                 }
 
                 break;
@@ -101,11 +100,11 @@ public class FloatTransformer extends TextTransformer {
     }
 
     /**
-     * Metoda słuzaca do zamieniania liczby na slowo
-     * @param text liczba do przeksztalcenia
-     * @return liczba zapisana slowami
+     * Metoda służaca do zamieniania liczby na słowo
+     * @param text liczba do przekształcenia
+     * @return liczba zapisana słowami
      */
-    private String transform_number(String text)
+    public String transform_number(String text)
     {
         int erase=0, len = text.length();
         String tmp = text;
@@ -125,10 +124,10 @@ public class FloatTransformer extends TextTransformer {
 
         if (text.length() > 3) return text;
         String result = "";
-        String[] hundreds = {"sto ", "dwiescie "," trzysta ","czterysta ","piecset ","szescset ","siedemset ","osiemset ","dziewiecset "};
-        String[] teen = {"jedenascie","dwanascie","trzynascie","czternascie","pietnascie","szesnascie","siedemnascie","osiemnascie","dziewietnascie"};
-        String[] dozen = {"", "dziesiec ","dwadziescia ","trzydziesci ","czterdziesci ","piecdziesiat ","szescdziesiat ","siedemdziesiat ","osiemdziesiat ","dziewiecdziesiat "};
-        String[] unity = {"","jeden","dwa","trzy","cztery","piec ","szesc ","siedem","osiem","dziewiec"};
+        String[] hundreds = {"sto ", "dwieście ", "trzysta ","czterysta ","pięćset ", "sześćset ","siedemset ","osiemset ","dziewięćset "};
+        String[] teen = {"jedenaście","dwanaście","trzynaście","czternaście","piętnaście","szesnaście","siedemnaście","osiemnaście","dziewiętnaście"};
+        String[] dozen = {"", "dziesięć ","dwadzieścia ","trzydzieści ","czterdzieści ","pięśdziesiąt ","sześćdziesiąt ","siedemdziesiąt ","osiemdziesiąt ","dziewiećdziesiąt "};
+        String[] unity = {"","jeden","dwa","trzy","cztery","pięć","sześć","siedem","osiem","dziewięć"};
         if( text.length()==3)
         {
             result = hundreds[text.charAt(0)-49] + dozen[text.charAt(1)-48] + unity[text.charAt(2)-48];
@@ -148,6 +147,7 @@ public class FloatTransformer extends TextTransformer {
         if( text.length()==1)
         {
             result = unity[text.charAt(0)-48];
+            if(text.charAt(0)==48) result = "zero";
         }
         int x = result.length()-1;
         if(result.charAt(x) ==32)
