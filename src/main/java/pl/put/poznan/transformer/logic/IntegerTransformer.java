@@ -1,26 +1,26 @@
 package pl.put.poznan.transformer.logic;
 
 /**
- * Klasa słuzaca do przeksztalcania zdania wejsciowego w taki sposob,
- * aby na wyjsciu zamiast liczb pojawil sie zapis tych liczb w slowach
+ * Klasa służąca do przekształcania zdania wejściowego w taki sposób,
+ * aby na wyjściu zamiast liczb pojawił się zapis tych liczb w słowach.
  * @author Rollo
  */
-public class IntegerTransformer extends TextTransformer {
+public class IntegerTransformer extends TextTransformerDecorator {
 
-    public IntegerTransformer(String[] transforms) {
-        super(transforms);
+    public IntegerTransformer(Transformer transformer) {
+        super(transformer);
     }
 
     public String transform(String text){
-        return transformInteger(text);
+        return super.transfrom(transformInteger(text));
     }
 
     /**
-     *Metoda sluzaca do wyszukiwania liczb w zdaniu
-     * @param text zdanie do przeksztalcenia
-     * @return zwraca zdanie z przeksztalconymi liczbami na slowa
+     * Metoda służąca do wyszukiwania liczb w zdaniu
+     * @param text zdanie do przekształcenia
+     * @return zwraca zdanie z przekształconymi liczbami na słowa
      */
-    private String transformInteger(String text){
+    public String transformInteger(String text){
         String tmp = "";
         String result = "";
         boolean number = false;
@@ -53,11 +53,11 @@ public class IntegerTransformer extends TextTransformer {
     }
 
     /**
-     * Metoda słuzaca do zamieniania liczby na slowo
-     * @param text liczba na wejscie
-     * @return zamieniona liczba na slowa
+     * Metoda służąca do zamieniania liczby na słowa
+     * @param text liczba na wejście
+     * @return zamieniona liczba na słowa
      */
-    private String transform_number(String text)
+    public String transform_number(String text)
     {
         int erase=0, len = text.length();
         String tmp = text;
@@ -75,10 +75,10 @@ public class IntegerTransformer extends TextTransformer {
         text = tmp.substring(erase,len);
         if (text.length() > 3) return text;
         String result = "";
-        String[] hundreds = {"sto ", "dwiescie ", "trzysta ","czterysta ","piecset ", "szescset ","siedemset ","osiemset ","dziewiecset "};
-        String[] teen = {"jedenascie","dwanascie","trzynascie","czternascie","pietnascie","szesnascie","siedemnascie","osiemnascie","dziewietnascie"};
-        String[] dozen = {"", "dziesiec ","dwadziescia ","trzydziesci ","czterdziesci ","piecdziesiat ","szescdziesiat ","siedemdziesiat ","osiemdziesiat ","dziewiecdziesiat "};
-        String[] unity = {"","jeden","dwa","trzy","cztery","piec ","szesc ","siedem","osiem","dziewiec"};
+        String[] hundreds = {"sto ", "dwieście ", "trzysta ","czterysta ","pięćset ", "sześćset ","siedemset ","osiemset ","dziewięćset "};
+        String[] teen = {"jedenaście","dwanaście","trzynaście","czternaście","piętnaście","szesnaście","siedemnaście","osiemnaście","dziewiętnaście"};
+        String[] dozen = {"", "dziesięć ","dwadzieścia ","trzydzieści ","czterdzieści ","pięśdziesiąt ","sześćdziesiąt ","siedemdziesiąt ","osiemdziesiąt ","dziewiećdziesiąt "};
+        String[] unity = {"","jeden","dwa","trzy","cztery","pięć","sześć","siedem","osiem","dziewięć"};
         if ( text.length() == 3 )
         {
             result = hundreds[text.charAt(0)-49] + dozen[text.charAt(1)-48] + unity[text.charAt(2)-48];
