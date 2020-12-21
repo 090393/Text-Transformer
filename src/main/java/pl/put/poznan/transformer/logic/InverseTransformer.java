@@ -2,27 +2,27 @@ package pl.put.poznan.transformer.logic;
 import java.lang.*;
 
 /**
- * Klasa sluzaca do zamiany zdania wejsciowego w taki sposob,
- * aby na wyjsciu pojawilo sie to samo zdanie w odwroconej kolejnosci
- * i z zachowaniew wielkosci liter na danym miejscu
+ * Klasa służąca do zamiany zdania wejściowego w taki sposób,
+ * aby na wyjściu pojawiło się to samo zdanie w odwróconej kolejności
+ * i z zachowaniem wielkości liter na danym miejscu.
  * @author Rollo
  */
-public class InverseTransformer extends TextTransformer{
+public class InverseTransformer extends TextTransformerDecorator{
 
-    public InverseTransformer(String[] transforms) {
-        super(transforms);
+    public InverseTransformer(Transformer transformer) {
+        super(transformer);
     }
 
     public String transform(String text){
-        return inverse(text);
+        return super.transform(inverse(text));
     }
 
     /**
-     * Metoda sluzaca do odwracania ciagu znaków z zachowaniem wielkości liter
+     * Metoda służąca do odwracania ciągu znaków z zachowaniem wielkości liter
      * @param text tekst do zamiany
-     * @return odwrocony tekst z zachowana kolejnosca duzych liter
+     * @return odwrócony tekst z zachowaniem kolejności wielkich liter
      */
-    private String inverse(String text){
+    public String inverse(String text){
         boolean[] upper = new boolean[text.length()];
 
         for (int i =0; i<text.length();i++)
