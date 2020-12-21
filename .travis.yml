@@ -1,9 +1,1 @@
 language: Java
-deploy:
-  provider: releases
-  file_glob: true
-  file: "src/main/java/pl/*"
-  skip_cleanup: true
-  on:
-    tags: true
-  name: $Text_Transformer
