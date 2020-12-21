@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class TextTransformerController {
 
         // perform the transformation
         TransformationsMapping tm = new TransformationsMapping(transforms, logger);
-        TextTransformationDecorator tt = tm.dynamicTransformation();
+        TextTransformerDecorator tt = tm.dynamicTransformation();
 
         if (tt == null)
             return "ERROR: Podano nieprawidłową transformację";
@@ -41,7 +41,7 @@ public class TextTransformerController {
 
         // perform the transformation
         TransformationsMapping tm = new TransformationsMapping(transforms, logger);
-        TextTransformationDecorator tt = tm.dynamicTransformation();
+        TextTransformerDecorator tt = tm.dynamicTransformation();
 
         if (tt == null) {
             logger.info("Given incorrect transformation");
