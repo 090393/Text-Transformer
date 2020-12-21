@@ -12,7 +12,7 @@ public class IntegerTransformer extends TextTransformerDecorator {
     }
 
     public String transform(String text){
-        return super.transfrom(transformInteger(text));
+        return super.transform(transformInteger(text));
     }
 
     /**
