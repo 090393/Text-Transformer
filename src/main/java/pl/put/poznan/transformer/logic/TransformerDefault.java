@@ -4,7 +4,6 @@ public class TransformerDefault implements Transformer{
 
     @Override
     public String transform(String text) {
-        //Default behavior
         return text;
     }
 }
