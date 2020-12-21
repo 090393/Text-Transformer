@@ -1,20 +1,21 @@
 package pl.put.poznan.transformer.logic;
+
 /**
- * Klasa słuzaca do zamiany liter na wielkie.
+ * Klasa służąca do zamiany liter na wielkie.
  * @author Krzychu
  */
-public class UpperTransformer extends TextTransformer{
+public class UpperTransformer extends TextTransformerDecorator{
 
-    public UpperTransformer(String[] transforms) { super(transforms); }
+    public UpperTransformer(Transformer transformer) { super(transformer); }
 
-    public String transform(String text){ return upper(text); }
+    public String transform(String text){ return super.transform(upper(text)); }
 
-    /** Zamaiana liter na wielkie
+    /** Zamiana liter na wielkie
      *
      * @param text Tekst wejściowy
      * @return Wynikowy tekst
      */
-    private String upper(String text){
+    public String upper(String text){
         return text.toUpperCase();
     }
 }
