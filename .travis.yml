@@ -10,7 +10,7 @@ jobs:
         file_glob: true
         file: target/*
         edge: true
-        tag_name: "v1.0"
+        tag_name: v1.0
         on:
           tags: false
           branch: main
