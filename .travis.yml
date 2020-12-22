@@ -4,14 +4,13 @@ jobs:
   include:
     - stage: GitHub Release
       script: skip
-      before_deploy:
-        - git tag v1.0
       deploy:
         provider: releases
         token: $GITHUB_OAUTH
         file_glob: true
         file: target/*
-        skip_cleanup: true
+        edge: true
+        tag_name: "v1.0"
         on:
           tags: false
           branch: main
