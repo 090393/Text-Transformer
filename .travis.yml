@@ -1,4 +1,4 @@
-language: Java
+language: java
 
 jobs:
   include:
@@ -6,7 +6,7 @@ jobs:
       script: skip
       deploy:
         provider: releases
-        api_key: "530bea30431ead125af533a70ae4ea3251f2d84a"
-        skip_cleanup: true
+        token: GITHUB_OAUTH
+        cleanup: false
         on:
           tags: true
