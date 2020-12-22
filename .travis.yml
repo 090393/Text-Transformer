@@ -9,4 +9,4 @@ jobs:
         token: $GITHUB_OAUTH
         cleanup: false
         on:
-          tags: true
+          tags: false
