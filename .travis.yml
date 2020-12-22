@@ -6,7 +6,7 @@ jobs:
       script: skip
       deploy:
         provider: releases
-        token: GITHUB_OAUTH
+        token: $GITHUB_OAUTH
         cleanup: false
         on:
           tags: true
