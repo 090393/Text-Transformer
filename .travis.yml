@@ -10,3 +10,4 @@ jobs:
         cleanup: false
         on:
           tags: false
+          branch: main
