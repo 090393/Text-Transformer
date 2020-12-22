@@ -5,13 +5,13 @@ jobs:
     - stage: GitHub Release
       script: skip
       before_deploy:
-        - git add target/text-transformer-1.0.jar.original
-        - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-        - git tag $TRAVIS_TAG
+        - git tag v1.0
       deploy:
         provider: releases
         token: $GITHUB_OAUTH
-        cleanup: false
+        file_glob: true
+        file: target/*
+        skip_cleanup: true
         on:
           tags: false
           branch: main
