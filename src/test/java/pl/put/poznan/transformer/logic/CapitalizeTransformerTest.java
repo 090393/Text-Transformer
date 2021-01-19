@@ -42,5 +42,7 @@ class CapitalizeTransformerTest {
         assertEquals("Witam Panów",ct.capitalize("witam panów"));
         assertEquals("Witampanów",ct.capitalize("witampanów"));
         assertEquals("A B C D E",ct.capitalize("a b c d e"));
+        assertEquals("A B C D E ",ct.capitalize("a b c d e "));
+
     }
 }
