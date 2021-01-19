@@ -8,7 +8,9 @@ import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -39,13 +41,22 @@ public class TextTransformerController {
     public static class Data {
 
         private String text;
+        private String tt;
 
         public String getText() {
-            return text;
+            return this.text;
         }
 
         public void setText(String text) {
             this.text = text;
+        }
+
+        public String getTt() {
+            return this.tt;
+        }
+
+        public void setTt(String text) {
+            this.tt = text;
         }
     }
 
@@ -56,22 +67,18 @@ public class TextTransformerController {
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
     public String post(@ModelAttribute("Data") Data data, Model model) {
 
-        /*
-
         // perform the transformation
-        TransformationsMapping tm = new TransformationsMapping(transforms, logger);
+
+        TransformationsMapping tm = new TransformationsMapping(data.getTt().split(","), logger);
         TextTransformerDecorator tt = tm.dynamicTransformation();
 
         if (tt == null) {
             logger.info("Given incorrect transformation");
             return "ERROR: Podano nieprawidłową transformację";
-        } else
-            return tt.transform(text);
-
-         */
-
-        String result = data.getText();
-        if (result == null) result = "";
-        return toHtml(result);
+        } else {
+            String result = data.getText();
+            if (result == null) return toHtml("");
+            return toHtml(tt.transform(result));
+        }
     }
 }

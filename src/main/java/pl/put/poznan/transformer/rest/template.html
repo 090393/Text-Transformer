@@ -6,10 +6,47 @@
 <body>
 <h3>Text Transformer</h3><br/>
 <form action="#" th:action="@{}" th:object="${Data}" method="post">
-    <p><input name="text" type="text" size=50 th:field="*{text}"><br></p>
-    <p><input type="submit" value="Submit"></p>
-</form>
-<br>====================================================<br/>
+    <label for="text">Enter your text here</label><br>
+    <input id="text" name="text" type="text" size=50 th:field="*{text}"><br><br>
+    <fieldset>
+        <legend>Transformations</legend>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var max_fields = 10;
+                var wrapper = $(".container1");
+                var add_button = $(".add_form_field");
+                var selectbox = '<div class="s"><select name="tt"><option value="upper">Upper</option><option value="lower">Lower</option><option value="abbreviate">Abbreviate</option><option value="capitalize">Capitalize</option><option value="expand">Expand</option><option value="float">Float</option><option value="integer">Integer</option><option value="inverse">Inverse</option><option value="encode">Encode</option><option value="decode">Decode</option></select></div>'
+                var x = 1;
+                $(document).on('click', '#butt', function(e) {
+                    e.preventDefault();
+                    if (x < max_fields) {
+                        x++;
+                        $(wrapper).append(selectbox + '');
+                    } else {
+                        alert('You can\'t add more!')
+                    }
+                });
+                $(wrapper).on("click", ".delete", function(e) {
+                    e.preventDefault();
+                    $(".container1").children("div[class=s]").remove();
+                    x = 1;
+                })
+            });
+        </script>
+        <div class="container1">
+            <div>
+                <button type="button" id="butt" class="butt">Add New Field &nbsp;
+                    <span style="font-size:16px; font-weight:bold;">+ </span>
+                </button>
+                <a href="#" class="delete">Clear</a>
+            </div>
+            <div><select name="tt"><option value="upper">Upper</option><option value="lower">Lower</option><option value="abbreviate">Abbreviate</option><option value="capitalize">Capitalize</option><option value="expand">Expand</option><option value="float">Float</option><option value="integer">Integer</option><option value="inverse">Inverse</option><option value="encode">Encode</option><option value="decode">Decode</option></select></div>
+        </div>
+    </fieldset><br>
+    <input type="submit" value="Submit">
+</form><br>
+====================================================<br/>
 <h3>Processed text:</h3><br/>
 xxxxx
 </body>
