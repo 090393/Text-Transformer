@@ -5,19 +5,38 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
+
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class AbbreviationTransformerTest {
 
+    AbbreviationTransformer at_mock;
     AbbreviationTransformer at;
+    Transformer transformer_mock;
     Transformer transformer;
 
     @BeforeEach
     void setUp() {
         transformer= mock(Transformer.class);
+        transformer_mock = mock(Transformer.class);
+        when(transformer_mock.transform(anyString())).thenAnswer(
+                (Answer<String>) invocationOnMock -> {
+                    Object arg = invocationOnMock.getArguments()[0];
+                    return (String) arg;
+                });
+        at_mock = new AbbreviationTransformer(transformer_mock);
         at =new AbbreviationTransformer(transformer);
+    }
+
+    @Test
+    void AbbreviationTransformerTestMock()
+    {
+        assertEquals("NP. czy np. oto jest pytanie.",at_mock.transform("NA PRZYKŁAD czy na przykład oto jest pytanie."));
+        assertEquals("Jestem m.in. studentem",at_mock.transform("Jestem między innymi studentem"));
+        assertEquals("Łęcka to postać z książki Bolesława Prusa itd.",at_mock.transform("Łęcka to postać z książki Bolesława Prusa i tak dalej"));
     }
 
     @Test
