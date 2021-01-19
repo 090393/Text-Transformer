@@ -2,20 +2,40 @@ package pl.put.poznan.transformer.logic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class InverseTransformerTest {
-    InverseTransformer test;
     Transformer transformer;
+    Transformer transformer_mock;
+    InverseTransformer test_mock;
+    InverseTransformer test;
 
     @BeforeEach
     void setup()
     {
         transformer = mock(Transformer.class);
+        transformer_mock = mock(Transformer.class);
+        when(transformer_mock.transform(anyString())).thenAnswer(
+                (Answer<String>) invocationOnMock -> {
+                    Object arg = invocationOnMock.getArguments()[0];
+                    return (String) arg;
+                });
+        test_mock = new InverseTransformer(transformer_mock);
         test = new InverseTransformer(transformer);
+    }
+
+    @Test
+    void InverseTransformerTestMock()
+    {
+        assertEquals("Connect4 advanced", test_mock.transform("Decnavda 4tcennoc"));
+        assertEquals("JoyStick", test_mock.transform("KciTsyoj"));
+        assertEquals("Esuom dna draObyek", test_mock.transform("Keyboard and Mouse"));
+        assertEquals("Elite_five", test_mock.transform("Evif_etile"));
     }
 
     @Test
