@@ -18,42 +18,42 @@ class ExpandTransformerTest {
 
     @Test
     void testCapitalize() {
-        assertEquals("ALA MA ZWIERZĘTA NP. kota",et.expand("ALA MA ZWIERZĘTA NA PRZYKŁAD kota"));
-        assertEquals("NP.",et.expand("NA PRZYKŁAD"));
-        assertEquals("NANA PRZYKŁAD",et.expand("NANA PRZYKŁAD"));
+        assertEquals("ALA MA ZWIERZĘTA NA PRZYKŁAD kota",et.expand("ALA MA ZWIERZĘTA NP. kota"));
+        assertEquals("NA PRZYKŁAD",et.expand("NP."));
+        assertEquals("NNP.",et.expand("NNP."));
     }
     @Test
     void testLower() {
-        assertEquals("ala ma zwierzęta np. kota",et.expand("ala ma zwierzęta na przykład kota"));
-        assertEquals("np.",et.expand("na przykład"));
-        assertEquals(" np. ",et.expand(" na przykład "));
-        assertEquals("na przykładoo",et.expand("na przykładoo"));
+        assertEquals("Proszę Państwa, Wysoki Sądzie, to jest profesor Rafał Wilczur",et.expand("Proszę Państwa, Wysoki Sądzie, to jest prof. Rafał Wilczur"));
+        assertEquals("myszka , klawiatura i tak dalej",et.expand("myszka , klawiatura itd."));
+        assertEquals("myszka , klawiatura aitd.",et.expand("myszka , klawiatura aitd."));
     }
     @Test
     void testBegin() {
-        assertEquals("m.in. kota",et.expand("między innymi kota"));
-        assertEquals("itp. kota",et.expand("i tym podobne kota"));
+        assertEquals("i tak dalej witam ",et.expand("itd. witam "));
+        assertEquals("profesor Mirosław Ochodek",et.expand("prof. Mirosław Ochodek"));
+        assertEquals("aprof. Mirosław Ochodek",et.expand( "aprof. Mirosław Ochodek"));
+
 
     }
     @Test
     void testMiddle() {
-        assertEquals("ala m.in. kota",et.expand("ala między innymi kota"));
-        assertEquals("kot itp. kota",et.expand("kot i tym podobne kota"));
-        assertEquals("ala amiędzy innymi kota",et.expand("ala amiędzy innymi kota"));
-        assertEquals("kot i tym podobnea kota",et.expand("kot i tym podobnea kota"));
+        assertEquals("daniel I TYM PODOBNE mokito",et.expand("daniel ITP. mokito"));
+        assertEquals("najlepszy matematyk to doktor Walczak",et.expand("najlepszy matematyk to dr Walczak"));
+        assertEquals("najlepszy matematyk to dr. Walczak",et.expand( "najlepszy matematyk to dr. Walczak"));
+
     }
     @Test
     void testEnd() {
-        assertEquals("ala m.in.",et.expand("ala między innymi"));
-        assertEquals("kot itp.",et.expand("kot i tym podobne"));
-        assertEquals("ala amiędzy innymi",et.expand("ala amiędzy innymi"));
-        assertEquals("kot ai tym podobne",et.expand("kot ai tym podobne"));
+        assertEquals("kupiłem MIĘDZY INNYMI",et.expand("kupiłem M.IN."));
+        assertEquals("kupiłem M.IN",et.expand("kupiłem M.IN"));
+        assertEquals("kupiłem między innymi",et.expand("kupiłem m.in."));
 
     }
     @Test
     void testHARDCORE() {
-        assertEquals("NP. ala amiędzy innymiitak dalej POSIADA itp. kota np. na przykładi",
-                et.expand("NA PRZYKŁAD ala amiędzy innymiitak dalej POSIADA i tym podobne kota na przykład na przykładi"));
+        assertEquals("DOKTOR Dr dro to prawie PROFESOR profesor Prof. profe. na przykład NA PRZYKŁAD TO między innymi m.in.. Amen",
+                et.expand("DR Dr dro to prawie PROF. prof. Prof. profe. np. NP. TO m.in. m.in.. Amen"));
     }
 
 
