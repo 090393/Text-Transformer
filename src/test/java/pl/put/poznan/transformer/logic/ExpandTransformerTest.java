@@ -2,18 +2,40 @@ package pl.put.poznan.transformer.logic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class ExpandTransformerTest {
     ExpandTransformer et;
+    ExpandTransformer et_mock;
+    Transformer transformer_mock;
     Transformer transformer;
 
     @BeforeEach
     void setUp() {
         transformer= mock(Transformer.class);
+        transformer_mock = mock(Transformer.class);
+        when(transformer_mock.transform(anyString())).thenAnswer(
+                (Answer<String>) invocationOnMock -> {
+                    Object arg = invocationOnMock.getArguments()[0];
+                    return (String) arg;
+                });
+        et_mock = new ExpandTransformer(transformer_mock);
         et =new ExpandTransformer(transformer);
+    }
+
+    @Test
+    void ExpandTransformerTestMock()
+    {
+        {
+            assertEquals("NA PRZYKŁAD czy na przykład oto jest pytanie.",et_mock.transform("NP. czy np. oto jest pytanie."));
+            assertEquals("Jestem między innymi studentem",et_mock.transform("Jestem m.in. studentem"));
+            assertEquals("Łęcka to postać z książki Bolesława Prusa i tak dalej",et_mock.transform("Łęcka to postać z książki Bolesława Prusa itd."));
+        }
     }
 
     @Test
