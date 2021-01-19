@@ -77,14 +77,14 @@ public class IntegerTransformer extends TextTransformerDecorator {
         String result = "";
         String[] hundreds = {"sto ", "dwieście ", "trzysta ","czterysta ","pięćset ", "sześćset ","siedemset ","osiemset ","dziewięćset "};
         String[] teen = {"jedenaście","dwanaście","trzynaście","czternaście","piętnaście","szesnaście","siedemnaście","osiemnaście","dziewiętnaście"};
-        String[] dozen = {"", "dziesięć ","dwadzieścia ","trzydzieści ","czterdzieści ","pięśdziesiąt ","sześćdziesiąt ","siedemdziesiąt ","osiemdziesiąt ","dziewiećdziesiąt "};
+        String[] dozen = {"", "dziesięć ","dwadzieścia ","trzydzieści ","czterdzieści ","pięćdziesiąt ","sześćdziesiąt ","siedemdziesiąt ","osiemdziesiąt ","dziewięćdziesiąt "};
         String[] unity = {"","jeden","dwa","trzy","cztery","pięć","sześć","siedem","osiem","dziewięć"};
         if ( text.length() == 3 )
         {
             result = hundreds[text.charAt(0)-49] + dozen[text.charAt(1)-48] + unity[text.charAt(2)-48];
             if(text.charAt(1) == 49 && text.charAt(2)>48)
             {
-                result = hundreds[text.charAt(1)-49] + teen[text.charAt(2)-49];
+                result = hundreds[text.charAt(0)-49] + teen[text.charAt(2)-49];
             }
         }
         if ( text.length() == 2 )
