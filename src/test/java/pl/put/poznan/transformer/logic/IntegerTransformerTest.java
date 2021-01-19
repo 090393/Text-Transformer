@@ -2,19 +2,41 @@ package pl.put.poznan.transformer.logic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class IntegerTransformerTest {
-    IntegerTransformer test;
     Transformer transformer;
+    Transformer transformer_mock;
+    IntegerTransformer test_mock;
+    IntegerTransformer test;
 
     @BeforeEach
     void setup()
     {
         transformer = mock(Transformer.class);
+        transformer_mock = mock(Transformer.class);
+        when(transformer_mock.transform(anyString())).thenAnswer(
+                (Answer<String>) invocationOnMock -> {
+                    Object arg = invocationOnMock.getArguments()[0];
+                    return (String) arg;
+                });
+        test_mock = new IntegerTransformer(transformer_mock);
         test = new IntegerTransformer(transformer);
+    }
+
+    @Test
+    void IntegerTransformerTestMock()
+    {
+        assertEquals("Liczba pięćset pięćdziesiąt pięć jest fajna", test_mock.transform("Liczba 555 jest fajna"));
+        assertEquals("Mniej niż zero", test_mock.transform("Mniej niż 0"));
+        assertEquals("Heh sześćset dwadzieścia jeden", test_mock.transform("Heh 621"));
+        assertEquals("Hanover dziewięćdziesiąt siedem, jest zespołom piłkarskim", test_mock.transform("Hanover 97, jest zespołom piłkarskim"));
+
     }
 
     @Test
