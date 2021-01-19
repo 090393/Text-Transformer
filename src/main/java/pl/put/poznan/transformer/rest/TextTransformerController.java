@@ -68,16 +68,18 @@ public class TextTransformerController {
     public String post(@ModelAttribute("Data") Data data, Model model) {
 
         // perform the transformation
-
         TransformationsMapping tm = new TransformationsMapping(data.getTt().split(","), logger);
         TextTransformerDecorator tt = tm.dynamicTransformation();
-
         if (tt == null) {
             logger.info("Given incorrect transformation");
             return "ERROR: Podano nieprawidłową transformację";
         } else {
             String result = data.getText();
-            if (result == null) return toHtml("");
+            if (result == null)
+            {
+                logger.info("Text is null");
+                return toHtml("");
+            }
             return toHtml(tt.transform(result));
         }
     }

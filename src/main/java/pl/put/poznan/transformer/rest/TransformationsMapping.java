@@ -107,11 +107,11 @@ public class TransformationsMapping {
                         break;
                     case "encode":
                         logger.info("Encode transformation");
-                        tt = new CaesarEncryption(transformer);
+                        tt = new CaesarEncryption(tt);
                         break;
                     case "decode":
                         logger.info("Decode transformation");
-                        tt = new CaesarDecryption(transformer);
+                        tt = new CaesarDecryption(tt);
                         break;
                     default:
                         return tt;
