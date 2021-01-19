@@ -60,6 +60,14 @@ public class TransformationsMapping {
                         logger.info("Inverse transformation");
                         tt = new InverseTransformer(transformer);
                         break;
+                    case "encode":
+                        logger.info("Encode transformation");
+                        tt = new CaesarEncryption(transformer);
+                        break;
+                    case "decode":
+                        logger.info("Decode transformation");
+                        tt = new CaesarDecryption(transformer);
+                        break;
                     default:
                         return tt;
                 }
@@ -96,6 +104,14 @@ public class TransformationsMapping {
                     case "inverse":
                         logger.info("Inverse transformation");
                         tt = new InverseTransformer(tt);
+                        break;
+                    case "encode":
+                        logger.info("Encode transformation");
+                        tt = new CaesarEncryption(transformer);
+                        break;
+                    case "decode":
+                        logger.info("Decode transformation");
+                        tt = new CaesarDecryption(transformer);
                         break;
                     default:
                         return tt;
