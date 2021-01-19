@@ -19,15 +19,21 @@ public class CaesarDecryption extends TextTransformerDecorator {
 
         for (int i = 0; i<text.length(); i++)
         {
-                int index =alfabet.indexOf(text.charAt(i));
-                if(index ==-1)
-                    index =alfabetUpper.indexOf(text.charAt(i));
-                if(index ==-1)
-                    continue;
-                index = (alfabet.size()+index -3)%alfabet.size();
+            int index =alfabet.indexOf(text.charAt(i));
+            if(index ==-1)
+                index =alfabetUpper.indexOf(text.charAt(i));
+            else{
+                index = (alfabet.size()+index - 3)%alfabet.size();
                 text = text.substring(0,i) + alfabet.get(index) + text.substring(i+1);
-
-
+                continue;
+            }
+            if(index ==-1)
+                continue;
+            else {
+                index = (alfabet.size() + index - 3) % alfabet.size();
+                text = text.substring(0, i) + alfabetUpper.get(index) + text.substring(i + 1);
+                continue;
+            }
 
         }
         return text;
