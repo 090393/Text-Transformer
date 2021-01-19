@@ -16,14 +16,47 @@ public class AbbreviationTransformer extends TextTransformerDecorator {
      * @return teskt z zamienionymi słowami na stróty
      */
     public String abbreviate(String text){
-        text = text.replace("na przykład", "np.");
-        text = text.replace("NA PRZYKŁAD", "NP.");
-        text = text.replace("między innymi", "m.in.");
-        text = text.replace("MIĘDZY INNYMI", "M.IN.");
-        text = text.replace("i tym podobne", "itp.");
-        text = text.replace("I TYM PODOBNE", "ITP.");
-        text = text.replace("i tak dalej", "itd.");
-        text = text.replace("I TAK DALEJ", "ITD.");
+        text = text.replaceAll("^na przykład ", "np. ");
+        text = text.replaceAll("^na przykład$", "np.");
+        text = text.replaceAll(" na przykład ", " np. ");
+        text = text.replaceAll(" na przykład$", " np.");
+
+        text = text.replaceAll("^NA PRZYKŁAD ", "NP. ");
+        text = text.replaceAll("^NA PRZYKŁAD$", "NP.");
+        text = text.replaceAll(" NA PRZYKŁAD ", " NP. ");
+        text = text.replaceAll(" NA PRZYKŁAD$", " NP.");
+
+        text = text.replaceAll("^między innymi ", "m.in. ");
+        text = text.replaceAll("^między innymi$", "m.in.");
+        text = text.replaceAll(" między innymi ", " m.in. ");
+        text = text.replaceAll(" między innymi$", " m.in.");
+
+
+        text = text.replaceAll("^MIĘDZY INNYMI ", "M.IN. ");
+        text = text.replaceAll("^MIĘDZY INNYMI$", "M.IN.");
+        text = text.replaceAll(" MIĘDZY INNYMI ", " M.IN. ");
+        text = text.replaceAll(" MIĘDZY INNYMI$", " M.IN.");
+
+        text = text.replaceAll("^i tym podobne ", "itp. ");
+        text = text.replaceAll("^i tym podobne$", "itp.");
+        text = text.replaceAll(" i tym podobne ", " itp. ");
+        text = text.replaceAll(" i tym podobne$", " itp.");
+
+        text = text.replaceAll("^I TYM PODOBNE ", "ITP. ");
+        text = text.replaceAll("^I TYM PODOBNE$", "ITP.");
+        text = text.replaceAll(" I TYM PODOBNE ", " ITP. ");
+        text = text.replaceAll(" I TYM PODOBNE$", " ITP.");
+
+
+        text = text.replaceAll("^i tak dalej ", "itd.");
+        text = text.replaceAll("^i tak dalej$", "itd. ");
+        text = text.replaceAll(" i tak dalej ", " itd. ");
+        text = text.replaceAll(" i tak dalej$", " itd.");
+
+        text = text.replaceAll("^I TAK DALEJ ", "ITD. ");
+        text = text.replaceAll("^I TAK DALEJ$", "ITD.");
+        text = text.replaceAll(" I TAK DALEJ ", " ITD. ");
+        text = text.replaceAll(" I TAK DALEJ$", " ITD.");
         return text;
     }
 }
