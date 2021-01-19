@@ -20,18 +20,65 @@ public class ExpandTransformer extends TextTransformerDecorator{
      * @return Wynikowy tekst
      */
     public String expand(String text){
-            text = text.replace("np.", "na przykład");
-            text = text.replace("NP.", "NA PRZYKŁAD");
-            text = text.replace("m.in.", "między innymi");
-            text = text.replace("M.IN.", "MIĘDZY INNYMI");
-            text = text.replace("itp.", "i tym podobne");
-            text = text.replace("ITP.", "I TYM PODOBNE");
-            text = text.replace("itd.", "i tak dalej");
-            text = text.replace("ITD.", "I TAK DALEJ");
-            text = text.replace("prof.", "profesor");
-            text = text.replace("PROF.", "PROFESOR");
-            text = text.replace("dr", "doktor");
-            text = text.replace("DR", "DOKTOR");
-            return text;
+        text = text.replaceAll("^np.$ ", "na przykład");
+        text = text.replaceAll("^np. ", "na przykład ");
+        text = text.replaceAll(" np.$", " na przykład");
+        text = text.replaceAll(" np. ", " na przykład ");
+
+        text = text.replaceAll("^NP.$", "NA PRZYKŁAD");
+        text = text.replaceAll("^NP. ", "NA PRZYKŁAD ");
+        text = text.replaceAll(" NP.$", " NA PRZYKŁAD");
+        text = text.replaceAll(" NP. ", " NA PRZYKŁAD ");
+
+        text = text.replaceAll("^m.in.$", "między innymi");
+        text = text.replaceAll("^m.in. ", "między innymi ");
+        text = text.replaceAll(" m.in.$", " między innymi");
+        text = text.replaceAll(" m.in. ", " między innymi ");
+
+        text = text.replaceAll("^M.IN.$", "MIĘDZY INNYMI");
+        text = text.replaceAll("^M.IN. ", "MIĘDZY INNYMI ");
+        text = text.replaceAll(" M.IN.$", " MIĘDZY INNYMI");
+        text = text.replaceAll(" M.IN. ", " MIĘDZY INNYMI ");
+
+        text = text.replaceAll("^itp.$", "i tym podobne");
+        text = text.replaceAll("^itp. ", "i tym podobne ");
+        text = text.replaceAll(" itp.$", " i tym podobne");
+        text = text.replaceAll(" itp. ", " i tym podobne ");
+
+        text = text.replaceAll("^ITP.$", "I TYM PODOBNE");
+        text = text.replaceAll("^ITP. ", "I TYM PODOBNE ");
+        text = text.replaceAll(" ITP.$", " I TYM PODOBNE");
+        text = text.replaceAll(" ITP. ", " I TYM PODOBNE ");
+
+        text = text.replaceAll("^itd.$", "i tak dalej");
+        text = text.replaceAll("^itd. ", "i tak dalej ");
+        text = text.replaceAll(" itd.$", " i tak dalej");
+        text = text.replaceAll(" itd. ", " i tak dalej ");
+
+        text = text.replaceAll("^ITD.$", "I TAK DALEJ");
+        text = text.replaceAll("^ITD. ", "I TAK DALEJ ");
+        text = text.replaceAll(" ITD.$", " I TAK DALEJ");
+        text = text.replaceAll(" ITD. ", " I TAK DALEJ ");
+
+        text = text.replaceAll("^prof.$", "profesor");
+        text = text.replaceAll("^prof. ", "profesor ");
+        text = text.replaceAll(" prof.$", " profesor");
+        text = text.replaceAll(" prof. ", " profesor ");
+
+        text = text.replaceAll("^PROF.$", "PROFESOR");
+        text = text.replaceAll("^PROF. ", "PROFESOR ");
+        text = text.replaceAll(" PROF.$", " PROFESOR");
+        text = text.replaceAll(" PROF. ", " PROFESOR ");
+
+        text = text.replaceAll("^dr$", "doktor");
+        text = text.replaceAll("^dr ", "doktor ");
+        text = text.replaceAll(" dr$", " doktor");
+        text = text.replaceAll(" dr ", " doktor ");
+
+        text = text.replaceAll("^DR$", "DOKTOR");
+        text = text.replaceAll("^DR ", "DOKTOR ");
+        text = text.replaceAll(" DR$", " DOKTOR");
+        text = text.replaceAll(" DR ", " DOKTOR ");
+        return text;
     }
 }

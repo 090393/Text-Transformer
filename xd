@@ -1,0 +1,28 @@
+package pl.put.poznan.transformer.logic;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+class AbbreviationTransformerTest {
+
+    AbbreviationTransformer at;
+    Transformer transformer;
+
+    @BeforeEach
+    void setUp() {
+        transformer= mock(Transformer.class);
+        at =new AbbreviationTransformer(transformer);
+    }
+
+    @Test
+    void testCapitalize() {
+        assertEquals("ALA MA ZWIĘRZĘTA NP. kota",at.abbreviate("ALA MA ZWIERZĘTA NA PRZYKŁAD kota"));
+    }
+
+}
